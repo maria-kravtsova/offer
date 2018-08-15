@@ -234,7 +234,8 @@
       var quiklyCtaButtons = attachListeners();
 
       data.dealId = quiklyCtaButtons[0].dataset.quiklyId || '';
-      data.iframeSrc = 'https://www.quiklydemo.com/' + data.dealId;
+      data.iframeSrc = 'https://www.quiklydemo.com//' + data.dealId;
+
 
       getUrlParams();
     };
