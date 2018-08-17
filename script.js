@@ -85,8 +85,10 @@
       embeddedQ.classList.add('embeddedQuikly__container--closing');
 
       embeddedQ.addEventListener('animationend', function (e) {
+        embeddedQ.classList.remove('embeddedQuikly__container--closing');
+        embeddedQ.classList.add('embeddedQuikly__container--hidden');
+        // e.target.remove();
         data.urlOnClose = document.getElementsByClassName('embeddedQuikly__iframe')[0].contentWindow.document.URL;
-        e.target.remove();
       });
     };
 
@@ -279,4 +281,4 @@
   /***/ })
 
   /******/ });
-  //# sourceMappingURL=embed-5bf866785b0b42a999f9.js.map
+  //# sourceMappingURL=embed-20d9f42d876e187ff543.js.map
