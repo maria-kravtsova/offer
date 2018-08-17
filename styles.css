@@ -8,8 +8,7 @@
   background: #fff;
   animation-name: quiklySlideUp;
   animation-timing-function: ease-out;
-  animation-duration: .2s;
-  overflow: hidden; }
+  animation-duration: .2s; }
   @media (min-width: 768px) {
     .embeddedQuikly__container {
       max-width: 375px;
@@ -118,4 +117,4 @@
   100% {
     opacity: 1; } }
 
-/*# sourceMappingURL=embeddedQuiklyStyles-7151201454fcaa60221cc63fe3b1ab20.css.map*/
+/*# sourceMappingURL=embeddedQuiklyStyles-55e9e4e8f14cb25ac67f9f545c21a381.css.map*/
