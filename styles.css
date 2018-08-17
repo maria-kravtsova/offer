@@ -54,11 +54,14 @@
         animation-name: quiklySlideOut;
         animation-duration: .2s;
         animation-timing-function: ease-out; } }
+  .embeddedQuikly__container--hidden {
+    display: none; }
   .embeddedQuikly__header {
   height: 50px;
   border: 1px solid #fff;
   background: #fff;
-  width: 100%; }
+  width: 100%;
+  opacity: 0.5; }
   .embeddedQuikly__exitButton {
   display: flex;
   justify-content: center;
@@ -69,9 +72,6 @@
   height: 50px;
   width: 50px;
   cursor: pointer; }
-  .embeddedQuikly__exitIcon {
-  font-size: 26px;
-  color: #83899e; }
   .embeddedQuikly__iframe {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
@@ -118,4 +118,4 @@
   100% {
     opacity: 1; } }
 
-/*# sourceMappingURL=embeddedQuiklyStyles-3657415ee946f4be16b89158a8c6a4a4.css.map*/
+/*# sourceMappingURL=embeddedQuiklyStyles-7151201454fcaa60221cc63fe3b1ab20.css.map*/

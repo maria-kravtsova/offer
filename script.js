@@ -74,9 +74,7 @@
 /***/ (function(module, exports) {
 
   (function () {
-    var data = {
-      launchOnPageLoad: false
-    };
+    var data = {};
     var appendElements = function appendElements(elements) {
       elements.forEach(function (element) {
         return element.parent.appendChild(element.child);
@@ -87,16 +85,21 @@
       embeddedQ.classList.add('embeddedQuikly__container--closing');
 
       embeddedQ.addEventListener('animationend', function (e) {
+        data.urlOnClose = document.getElementsByClassName('embeddedQuikly__iframe')[0].contentWindow.document.URL;
         e.target.remove();
       });
     };
 
     var buildElements = function buildElements(elements) {
       return elements.map(function (element) {
-        var createdElement = document.createElement(element.elementType);
+        var createdElement = element.elementType === 'path' || element.elementType === 'svg' ? document.createElementNS('http://www.w3.org/2000/svg', element.elementType) : document.createElement(element.elementType);
 
-        element.classNames.forEach(function (className) {
+        element.classNames && element.classNames.forEach(function (className) {
           createdElement.classList.add(className);
+        });
+
+        element.attributes && element.attributes.forEach(function (attr) {
+          createdElement.setAttribute(attr.name, attr.value);
         });
 
         return createdElement;
@@ -117,13 +120,30 @@
         classNames: ['embeddedQuikly__exitButton'],
         pos: 2
       }, {
-        elementType: 'i',
-        classNames: ['material-icons', 'embeddedQuikly__exitIcon'],
+        elementType: 'svg',
+        attributes: [{ name: 'width', value: '24' }, { name: 'height', value: '24' }, { name: 'viewBox', value: '0 0 24 24' }, { name: 'fill', value: '#83899e' }],
         pos: 3
       }, {
         elementType: 'div',
         classNames: ['embeddedQuikly__header'],
         pos: 4
+      }, {
+        elementType: 'path',
+        attributes: [{
+          name: 'd',
+          value: 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'
+        }],
+        pos: 5
+      }, {
+        elementType: 'path',
+        attributes: [{
+          name: 'd',
+          value: 'M0 0h24v24H0z'
+        }, {
+          name: 'fill',
+          value: 'none'
+        }],
+        pos: 6
       }]);
 
       var embeddedQ = elements[0];
@@ -131,16 +151,16 @@
       var closeButton = elements[2];
       var closeIcon = elements[3];
       var header = elements[4];
+      var path = elements[5];
+      var path2 = elements[6];
 
       closeButton.addEventListener('click', function () {
         closeWidget(embeddedQ);
       });
 
-      var text = document.createTextNode('clear');
+      appendElements([{ parent: embeddedQ, child: header }, { parent: closeIcon, child: path }, { parent: closeIcon, child: path2 }, { parent: closeButton, child: closeIcon }, { parent: embeddedQ, child: iframe }, { parent: embeddedQ, child: closeButton }, { parent: header, child: closeButton }]);
 
-      appendElements([{ parent: embeddedQ, child: header }, { parent: closeIcon, child: text }, { parent: closeButton, child: closeIcon }, { parent: embeddedQ, child: iframe }, { parent: embeddedQ, child: closeButton }, { parent: header, child: closeButton }]);
-
-      iframe.setAttribute('src', data.iframeSrc);
+      iframe.setAttribute('src', data.urlOnClose ? data.urlOnClose : data.iframeSrc);
       iframe.setAttribute('sandbox', 'allow-forms allow-popups allow-pointer-lock allow-same-origin allow-scripts');
 
       return embeddedQ;
@@ -152,6 +172,18 @@
       }
 
       var embeddedQ = setupWidget();
+      if (document.querySelectorAll('meta[name="viewport"]').length === 0) {
+        var viewportTag = buildElements([{
+          elementType: 'meta',
+          attributes: [{ name: 'name', value: 'viewport' }, { name: 'id', value: 'quiklyViewport' }, {
+            name: 'content',
+            value: 'shrink-to-fit=no, width=device-width, initial-scale=1, maximum-scale=1'
+          }]
+        }])[0];
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(viewportTag);
+      }
+
       document.body.appendChild(embeddedQ);
     };
 
@@ -236,7 +268,7 @@
       var quiklyCtaButtons = attachListeners();
 
       data.dealId = quiklyCtaButtons[0].dataset.quiklyId || '';
-      data.iframeSrc = 'http://www.quiklydemo.com//' + data.dealId;
+      data.iframeSrc = 'http://www.quikly.localhost:5000/' + data.dealId;
 
       getUrlParams();
     };
@@ -247,4 +279,4 @@
   /***/ })
 
   /******/ });
-  //# sourceMappingURL=embed-364e71cf19958e55de2e.js.map
+  //# sourceMappingURL=embed-5bf866785b0b42a999f9.js.map
