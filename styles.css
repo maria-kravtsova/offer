@@ -1,23 +1,21 @@
-body {
-  margin: 0; }
-
 .embeddedQuikly__container {
   height: 100vh;
   width: 100vw;
   border-radius: 0px;
   position: absolute;
   top: 0;
+  left: 0;
   background: #fff;
   animation-name: quiklySlideUp;
   animation-timing-function: ease-out;
   animation-duration: .2s;
   overflow: hidden; }
-
-@media (min-width: 768px) {
+  @media (min-width: 768px) {
     .embeddedQuikly__container {
       max-width: 375px;
       height: 100vh;
       right: 0;
+      left: auto;
       top: 20px;
       bottom: 20px;
       margin: auto 0;
@@ -26,8 +24,7 @@ body {
       animation-name: quiklySlideIn;
       animation-timing-function: ease-out;
       animation-duration: .2s; } }
-
-@media (min-width: 1440px) {
+  @media (min-width: 1440px) {
     .embeddedQuikly__container {
       max-width: 375px;
       height: 90vh;
@@ -42,32 +39,27 @@ body {
       animation-name: quiklySlideIn;
       animation-timing-function: ease-out;
       animation-duration: .2s; } }
-
-.embeddedQuikly__container--closing {
+  .embeddedQuikly__container--closing {
     background: #fff;
     animation-name: quiklySlideDown;
     animation-duration: .2s;
     animation-timing-function: ease-in-out; }
-
-@media (min-width: 768px) {
+  @media (min-width: 768px) {
       .embeddedQuikly__container--closing {
         animation-name: quiklySlideOut;
         animation-duration: .2s;
         animation-timing-function: ease-out; } }
-
-@media (min-width: 1024px) {
+  @media (min-width: 1024px) {
       .embeddedQuikly__container--closing {
         animation-name: quiklySlideOut;
         animation-duration: .2s;
         animation-timing-function: ease-out; } }
-
-.embeddedQuikly__header {
+  .embeddedQuikly__header {
   height: 50px;
   border: 1px solid #fff;
   background: #fff;
   width: 100%; }
-
-.embeddedQuikly__exitButton {
+  .embeddedQuikly__exitButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,25 +69,21 @@ body {
   height: 50px;
   width: 50px;
   cursor: pointer; }
-
-.embeddedQuikly__exitIcon {
+  .embeddedQuikly__exitIcon {
   font-size: 26px;
   color: #83899e; }
-
-.embeddedQuikly__iframe {
+  .embeddedQuikly__iframe {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
   height: calc(100% - 50px);
   width: 100%;
   border: none; }
-
-@media (min-width: 1024px) {
+  @media (min-width: 1024px) {
     .embeddedQuikly__iframe {
       height: calc(100% - 50px);
       width: 100%;
       background-color: #fff; } }
-
-@keyframes quiklySlideUp {
+  @keyframes quiklySlideUp {
   0% {
     opacity: 1;
     transform: translate(0px, 100%);
@@ -103,35 +91,31 @@ body {
   100% {
     opacity: 1;
     transform: translate(0px, 0px); } }
-
-@keyframes quiklySlideIn {
+  @keyframes quiklySlideIn {
   0% {
     opacity: 1;
     transform: translate(100%, 0px); }
   100% {
     opacity: 1;
     transform: translate(0px, 0px); } }
-
-@keyframes quiklySlideDown {
+  @keyframes quiklySlideDown {
   0% {
     opacity: 1;
     transform: translate(0px, 0px); }
   100% {
     opacity: 1;
     transform: translate(0px, 100%); } }
-
-@keyframes quiklySlideOut {
+  @keyframes quiklySlideOut {
   0% {
     opacity: 1;
     transform: translate(0px, 0px); }
   100% {
     opacity: 1;
     transform: translate(100%, 0px); } }
-
-@keyframes quiklyFadeIn {
+  @keyframes quiklyFadeIn {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
 
-/*# sourceMappingURL=embeddedQuiklyStyles-ae71fd217e2891cf292f2a665a8a5eb3.css.map*/
+/*# sourceMappingURL=embeddedQuiklyStyles-3657415ee946f4be16b89158a8c6a4a4.css.map*/

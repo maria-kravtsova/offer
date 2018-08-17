@@ -74,8 +74,9 @@
 /***/ (function(module, exports) {
 
   (function () {
-    var data = {};
-
+    var data = {
+      launchOnPageLoad: false
+    };
     var appendElements = function appendElements(elements) {
       elements.forEach(function (element) {
         return element.parent.appendChild(element.child);
@@ -158,6 +159,7 @@
       var baseURL = data.iframeSrc;
 
       if (quiklyParams['token']) {
+        data.launchOnPageLoad = true;
         baseURL = baseURL + '/t/' + quiklyParams['token'];
         delete quiklyParams['token'];
       }
@@ -173,8 +175,8 @@
 
       data.iframeSrc = baseURL;
 
-      if (baseURL !== data.iframeSrc) {
-        data.launchOnPageLoad = true;
+      if (data.launchOnPageLoad) {
+        launchEmbeddedQ();
       }
     };
 
@@ -200,7 +202,7 @@
         params[parts[0]] = parts[1];
       });
 
-      params.length > 0 && parseQuiklyParams(params);
+      Object.keys(params).length > 0 && parseQuiklyParams(params);
     };
 
     var attachListeners = function attachListeners() {
@@ -234,8 +236,7 @@
       var quiklyCtaButtons = attachListeners();
 
       data.dealId = quiklyCtaButtons[0].dataset.quiklyId || '';
-      data.iframeSrc = 'https://www.quiklydemo.com//' + data.dealId;
-
+      data.iframeSrc = 'http://www.quiklydemo.com//' + data.dealId;
 
       getUrlParams();
     };
@@ -246,4 +247,4 @@
   /***/ })
 
   /******/ });
-  //# sourceMappingURL=embed-ef3b4808a3fee10feac1.js.map
+  //# sourceMappingURL=embed-364e71cf19958e55de2e.js.map
