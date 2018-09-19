@@ -6300,3 +6300,73 @@ html, body {
         // transform: scaleX(0.00) scaleY(0.00);
     }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: snow;
+  background-color: cornflowerblue;
+}
+
+.just-to-fix-x-overflow {
+  height: 2000px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.widget {
+  display: inline-block;
+  position: absolute;
+  right: -7em;
+  top: 6em;
+  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/*.u-button {
+  //Reset Button Default Styles
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}*/
+.our-places-btn {
+  cursor: pointer;
+  height: 176px;
+  width: 48px;
+  opacity: .2;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3585/ourplaces.png");
+  background-size: cover;
+}
+
+.our-places-btn,
+.locationsGroup {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.locationsGroup {
+  padding: 0 1em;
+  background-color: #152229;
+}
+
+.location {
+  display: block;
+  padding: 2em 0.5em;
+}
+
+.location + .location {
+  border-top: 1px dotted snow;
+}
+
+@media screen and (min-width: 29.875em) {
+  .our-places-btn {
+    opacity: 1;
+    transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+.is-open {
+  right: 0;
+}
+

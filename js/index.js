@@ -7,4 +7,8 @@ $(function() {
         $('#overlay').addClass('blur-out');
         e.stopPropagation();
     });
+
+    $('.widget').on('click touch', '#our-places-btn', function() {
+        $('.widget').toggleClass('is-open');
+      });
 });
