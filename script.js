@@ -270,7 +270,7 @@
       var quiklyCtaButtons = attachListeners();
 
       data.dealId = quiklyCtaButtons[0].dataset.quiklyId || '';
-      data.iframeSrc = 'http://www.quikly.com//' + data.dealId;
+      data.iframeSrc = 'http://www.quiklydemo.com//' + data.dealId;
 
       getUrlParams();
     };
